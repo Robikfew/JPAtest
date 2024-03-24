@@ -1,11 +1,9 @@
 package com.capgemini.wsb.persistance.dao;
 
 import com.capgemini.wsb.dto.PatientTO;
-import com.capgemini.wsb.mapper.PatientMapper;
 import com.capgemini.wsb.persistence.dao.PatientDao;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
 import com.capgemini.wsb.persistence.entity.VisitEntity;
-import com.capgemini.wsb.rest.exception.EntityNotFoundException;
 import com.capgemini.wsb.service.impl.PatientServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
