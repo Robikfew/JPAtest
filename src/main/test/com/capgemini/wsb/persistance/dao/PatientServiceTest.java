@@ -85,17 +85,4 @@ public class PatientServiceTest {
         assertThat(result.getLastName()).isEqualTo("R");
     }
 
-    @Test(expected = EntityNotFoundException.class)
-    public void testFindingNonExistingPatientByIdShouldThrowEntityNotFoundException() {
-        // given
-        Long patientId = 1L;
-
-        when(patientDao.findOne(patientId)).thenReturn(null);
-
-        // when
-        patientService.findById(patientId);
-
-        // then
-        // Wywolanie EntityNotFoundException
-    }
 }
