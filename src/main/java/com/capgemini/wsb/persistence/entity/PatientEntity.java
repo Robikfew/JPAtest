@@ -1,13 +1,6 @@
 package com.capgemini.wsb.persistence.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -36,10 +29,21 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
+	// Relacja z encją AddressEntity - jeden pacjent może mieć jeden adres
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private AddressEntity address;
+
 	// Relacja z encją VisitEntity - wiele wizyt może być przypisanych do jednego pacjenta
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 	private List<VisitEntity> visits; // Relacja jednostronna od strony rodzica (właściciela relacji)
+
+	@Column(nullable = false)
 	private Integer visitsCount;
+
+	@Column(name = "money_spend")
+	private Integer moneySpend;
+
 
 	// Gettery i settery
 	public Long getId() {
@@ -105,11 +109,24 @@ public class PatientEntity {
 	public void setVisits(List<VisitEntity> visits) {
 		this.visits = visits;
 	}
-	public Integer getAdditionalField() {
+
+	public Integer getVisitsCount() {
 		return visitsCount;
 	}
 
-	public void setAdditionalField(Integer additionalField) {
-		this.visitsCount = additionalField;
+	public void setVisitsCount(Integer visitsCount) {
+		this.visitsCount = visitsCount;
 	}
+
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+
+	public Integer getMoneySpend() {return moneySpend;}
+
+	public void setMoneySpend(Integer moneySpend) {this.moneySpend = moneySpend;}
 }

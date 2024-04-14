@@ -30,6 +30,11 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
+	// Relacja z encją AddressEntity - jeden doktor może mieć jeden adres
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private AddressEntity address;
+
 	// Relacja z encją VisitEntity - wiele wizyt może być przypisanych do jednego lekarza
 	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
 	private List<VisitEntity> visits; // Relacja jednostronna od strony rodzica (właściciela relacji)
@@ -97,5 +102,13 @@ public class DoctorEntity {
 
 	public void setVisits(List<VisitEntity> visits) {
 		this.visits = visits;
+	}
+
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
 	}
 }

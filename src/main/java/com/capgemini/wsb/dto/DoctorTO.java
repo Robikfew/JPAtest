@@ -1,20 +1,21 @@
 package com.capgemini.wsb.dto;
 
+import com.capgemini.wsb.persistence.enums.Specialization;
+
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
-public class PatientTO implements Serializable {
+public class DoctorTO implements Serializable {
 
     private Long id;
     private String firstName;
     private String lastName;
     private String telephoneNumber;
     private String email;
-    private String patientNumber;
-    private LocalDate dateOfBirth;
-    private Integer visitsCount;
-    private Integer moneySpend;
+    private String doctorNumber;
+    private Specialization specialization;
+    private AddressTO address; // DTO dla adresu
+    private List<VisitTO> visits; // Lista DTO dla wizyt
 
     // Gettery i settery
     public Long getId() {
@@ -57,31 +58,35 @@ public class PatientTO implements Serializable {
         this.email = email;
     }
 
-    public String getPatientNumber() {
-        return patientNumber;
+    public String getDoctorNumber() {
+        return doctorNumber;
     }
 
-    public void setPatientNumber(String patientNumber) {
-        this.patientNumber = patientNumber;
+    public void setDoctorNumber(String doctorNumber) {
+        this.doctorNumber = doctorNumber;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public Specialization getSpecialization() {
+        return specialization;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setSpecialization(Specialization specialization) {
+        this.specialization = specialization;
     }
 
-    public Integer getVisitsCount() {
-        return visitsCount;
+    public AddressTO getAddress() {
+        return address;
     }
 
-    public void setVisitsCount(Integer visitsCount) {
-        this.visitsCount = visitsCount;
+    public void setAddress(AddressTO address) {
+        this.address = address;
     }
 
-    public Integer getMoneySpend() {return moneySpend;}
+    public List<VisitTO> getVisits() {
+        return visits;
+    }
 
-    public void setMoneySpend(Integer moneySpend) {this.moneySpend = moneySpend;}
+    public void setVisits(List<VisitTO> visits) {
+        this.visits = visits;
+    }
 }

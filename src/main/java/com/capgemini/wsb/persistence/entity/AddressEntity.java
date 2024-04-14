@@ -1,12 +1,6 @@
 package com.capgemini.wsb.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Column;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -27,13 +21,15 @@ public class AddressEntity {
 	@Column(nullable = false)
 	private String postalCode;
 
-	// Relacja z encją PatientEntity - wiele adresów może być przypisanych do jednego pacjenta
-	@ManyToOne
-	private PatientEntity patient; // Relacja jednostronna od strony rodzica (właściciela relacji)
+	// Relacja z encją PatientEntity - jedno do jednego
+	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+	@JoinColumn(name = "patient_id")
+	private PatientEntity patient;
 
-	// Relacja z encją DoctorEntity - wiele adresów może być przypisanych do jednego lekarza
-	@ManyToOne
-	private DoctorEntity doctor; // Relacja jednostronna od strony rodzica (właściciela relacji)
+	// Relacja z encją DoctorEntity - jedno do jednego
+	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+	@JoinColumn(name = "doctor_id")
+	private DoctorEntity doctor;
 
 	// Getters i setters
 	public Long getId() {

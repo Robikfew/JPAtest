@@ -8,6 +8,7 @@ public class VisitTO implements Serializable {
     private String description;
     private LocalDateTime time;
     private PatientTO patient; // DTO dla pacjenta
+    private DoctorTO doctor; // DTO dla lekarza
 
     // Gettery i settery
     public Long getId() {
@@ -40,5 +41,13 @@ public class VisitTO implements Serializable {
 
     public void setPatient(PatientTO patient) {
         this.patient = patient;
+    }
+
+    public DoctorTO getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(DoctorTO doctor) {
+        this.doctor = doctor;
     }
 }

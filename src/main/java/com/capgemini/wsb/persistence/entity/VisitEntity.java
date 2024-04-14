@@ -1,12 +1,11 @@
 package com.capgemini.wsb.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javafx.print.Collation;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "VISIT")
@@ -28,9 +27,9 @@ public class VisitEntity {
     @ManyToOne
     private PatientEntity patient;
 
-    // Relacja z encją MedicalTreatmentEntity - jedna wizyta może być przypisana do jednego leczenia
-    @ManyToOne
-    private MedicalTreatmentEntity medicalTreatment;
+    // Relacja jednostronna z encją MedicalTreatmentEntity - wiele leczeń może być przypisanych do jednej wizyty
+    @OneToMany(mappedBy = "visit", cascade = CascadeType.ALL)
+    private List<MedicalTreatmentEntity> medicalTreatments; // Relacja jednostronna od strony dziecka
 
     // Gettery i settery
     public Long getId() {
@@ -73,11 +72,12 @@ public class VisitEntity {
         this.patient = patient;
     }
 
-    public MedicalTreatmentEntity getMedicalTreatment() {
-        return medicalTreatment;
+    public List<MedicalTreatmentEntity> getMedicalTreatments() {
+        return medicalTreatments;
     }
 
-    public void setMedicalTreatment(MedicalTreatmentEntity medicalTreatment) {
-        this.medicalTreatment = medicalTreatment;
+    public void setMedicalTreatments(List<MedicalTreatmentEntity> medicalTreatments) {
+        this.medicalTreatments = medicalTreatments;
     }
+
 }
