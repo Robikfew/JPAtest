@@ -54,14 +54,14 @@ public class PatientDaoImplTest {
     @Transactional
     public void testFindPatientsWithMoreThanVisits() {
         // given
-        int visitsCount = 1; // Looking for patients with more than 2 visits
+        int visitsCount = 1; // szukamy pacjenta z wiecej niz 1 wizyta
 
         // when
         List<PatientEntity> patients = patientDao.findPatientsWithMoreThanVisits(visitsCount);
 
         // then
         assertThat(patients).isNotNull();
-        assertThat(patients).hasSize(1); // Assuming there is one patient with more than 2 visits
+        assertThat(patients).hasSize(1); // oczekujemy 1 pacjenta z 2+ wizytami. Do sprawdzenia!!!
     }
 
     @Transactional
