@@ -13,8 +13,10 @@ public class PatientTO implements Serializable {
     private String email;
     private String patientNumber;
     private LocalDate dateOfBirth;
-    private Integer visitsCount;
+    private Long visitsCount;
     private Integer moneySpend;
+    private AddressTO address;
+    private List<VisitTO> visits;
 
     // Gettery i settery
     public Long getId() {
@@ -73,15 +75,30 @@ public class PatientTO implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Integer getVisitsCount() {
+    public Long getVisitsCount() {
         return visitsCount;
     }
 
-    public void setVisitsCount(Integer visitsCount) {
+    public void setVisitsCount(Long visitsCount) {
         this.visitsCount = visitsCount;
     }
 
     public Integer getMoneySpend() {return moneySpend;}
 
     public void setMoneySpend(Integer moneySpend) {this.moneySpend = moneySpend;}
+    public AddressTO getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressTO address) {
+        this.address = address;
+    }
+
+    public List<VisitTO> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<VisitTO> visits) {
+        this.visits = visits;
+    }
 }

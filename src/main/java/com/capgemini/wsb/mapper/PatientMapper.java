@@ -19,6 +19,7 @@ public final class PatientMapper {
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setVisitsCount(patientEntity.getVisitsCount());
         patientTO.setMoneySpend(patientEntity.getMoneySpend());
+        patientTO.setAddress(AddressMapper.mapToTO(patientEntity.getAddress()));
         return patientTO;
     }
 
@@ -36,6 +37,7 @@ public final class PatientMapper {
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
         patientEntity.setVisitsCount(patientTO.getVisitsCount());
         patientEntity.setMoneySpend(patientTO.getMoneySpend());
+        patientEntity.setAddress(AddressMapper.mapToEntity(patientTO.getAddress()));
         return patientEntity;
     }
 }

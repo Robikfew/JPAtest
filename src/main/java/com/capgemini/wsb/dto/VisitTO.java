@@ -2,6 +2,7 @@ package com.capgemini.wsb.dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class VisitTO implements Serializable {
     private Long id;
@@ -9,6 +10,7 @@ public class VisitTO implements Serializable {
     private LocalDateTime time;
     private PatientTO patient; // DTO dla pacjenta
     private DoctorTO doctor; // DTO dla lekarza
+    private List<MedicalTreatmentTO> medicalTreatments;
 
     // Gettery i settery
     public Long getId() {
@@ -49,5 +51,13 @@ public class VisitTO implements Serializable {
 
     public void setDoctor(DoctorTO doctor) {
         this.doctor = doctor;
+    }
+
+    public List<MedicalTreatmentTO> getMedicalTreatments() {
+        return medicalTreatments;
+    }
+
+    public void setMedicalTreatments(List<MedicalTreatmentTO> medicalTreatments) {
+        this.medicalTreatments = medicalTreatments;
     }
 }

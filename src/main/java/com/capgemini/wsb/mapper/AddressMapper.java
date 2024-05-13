@@ -18,6 +18,7 @@ public final class AddressMapper
         addressTO.setAddressLine2(addressEntity.getAddressLine2());
         addressTO.setCity(addressEntity.getCity());
         addressTO.setPostalCode(addressEntity.getPostalCode());
+        addressTO.setDoctor(DoctorMapper.mapToTO(addressEntity.getDoctor()));
         return addressTO;
     }
 
@@ -33,6 +34,7 @@ public final class AddressMapper
         addressEntity.setAddressLine2(addressTO.getAddressLine2());
         addressEntity.setCity(addressTO.getCity());
         addressEntity.setPostalCode(addressTO.getPostalCode());
+        addressEntity.setDoctor(DoctorMapper.mapToEntity(addressTO.getDoctor()));
         return addressEntity;
     }
 }

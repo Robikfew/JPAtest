@@ -13,6 +13,8 @@ public class AddressTO implements Serializable
     private String addressLine2;
 
     private String postalCode;
+    private PatientTO patient;
+    private DoctorTO doctor;
 
     public Long getId() {
         return id;
@@ -52,5 +54,20 @@ public class AddressTO implements Serializable
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+    public PatientTO getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientTO patient) {
+        this.patient = patient;
+    }
+
+    public DoctorTO getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(DoctorTO doctor) {
+        this.doctor = doctor;
     }
 }

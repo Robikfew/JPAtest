@@ -22,7 +22,7 @@ public final class DoctorMapper {
         doctorTO.setEmail(doctorEntity.getEmail());
         doctorTO.setDoctorNumber(doctorEntity.getDoctorNumber());
         doctorTO.setSpecialization(doctorEntity.getSpecialization());
-        doctorTO.setAddress(AddressMapper.mapToTO(doctorEntity.getAddress())); // Mapowanie adresu
+        doctorTO.setAddress(AddressMapper.mapToTO(doctorEntity.getAddress()));
 
         // Mapowanie wizyt
         List<VisitTO> visitTOList = new ArrayList<>();
@@ -49,7 +49,7 @@ public final class DoctorMapper {
         doctorEntity.setEmail(doctorTO.getEmail());
         doctorEntity.setDoctorNumber(doctorTO.getDoctorNumber());
         doctorEntity.setSpecialization(doctorTO.getSpecialization());
-        doctorEntity.setAddress(AddressMapper.mapToEntity(doctorTO.getAddress())); // Mapowanie adresu
+        doctorEntity.setAddress(AddressMapper.mapToEntity(doctorTO.getAddress()));
 
         // Mapowanie wizyt
         List<VisitEntity> visitEntityList = new ArrayList<>();

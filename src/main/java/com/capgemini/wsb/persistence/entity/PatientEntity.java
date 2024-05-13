@@ -39,7 +39,7 @@ public class PatientEntity {
 	private List<VisitEntity> visits; // Relacja jednostronna od strony rodzica (właściciela relacji)
 
 	@Column(nullable = false)
-	private Integer visitsCount;
+	private Long visitsCount;
 
 	@Column(name = "money_spend")
 	private Integer moneySpend;
@@ -110,11 +110,11 @@ public class PatientEntity {
 		this.visits = visits;
 	}
 
-	public Integer getVisitsCount() {
+	public Long getVisitsCount() {
 		return visitsCount;
 	}
 
-	public void setVisitsCount(Integer visitsCount) {
+	public void setVisitsCount(Long visitsCount) {
 		this.visitsCount = visitsCount;
 	}
 

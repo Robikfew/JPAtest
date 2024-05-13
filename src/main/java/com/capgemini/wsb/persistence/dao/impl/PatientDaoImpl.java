@@ -24,15 +24,15 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
     }
 
     @Override
-    public List<VisitEntity> findVisitsByPatientId(Long patientId) {
-        Query query = entityManager.createQuery("SELECT v FROM VisitEntity v WHERE v.patient.id = :patientId");
-        query.setParameter("patientId", patientId);
+    public List<VisitEntity> findVisitsByPatientId(Long id) {
+        Query query = entityManager.createQuery("SELECT v FROM VisitEntity v WHERE v.patient.id = :id");
+        query.setParameter("id", id);
         return query.getResultList();
     }
 
     @Override
-    public List<PatientEntity> findPatientsWithMoreThanVisits(int visitsCount) {
-        Query query = entityManager.createQuery("SELECT p FROM PatientEntity p JOIN FETCH p.visits v GROUP BY p.id HAVING COUNT(v) > :visitsCount");
+    public List<PatientEntity> findPatientsWithMoreThanVisits(Long visitsCount) {
+        Query query = entityManager.createQuery("SELECT p FROM PatientEntity p JOIN FETCH p.visits v GROUP BY p.id, v.id HAVING COUNT(v) > :visitsCount");
         query.setParameter("visitsCount", visitsCount);
         return query.getResultList();
     }

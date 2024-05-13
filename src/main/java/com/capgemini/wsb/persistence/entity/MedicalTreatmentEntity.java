@@ -3,7 +3,7 @@ package com.capgemini.wsb.persistence.entity;
 import com.capgemini.wsb.persistence.enums.TreatmentType;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(name = "MEDICAL_TREATMENT")
@@ -21,6 +21,7 @@ public class MedicalTreatmentEntity {
 
 	// Relacja z encją VisitEntity - wiele leczeń może być przypisanych do jednej wizyty
 	@ManyToOne
+	@JoinColumn(name = "visit_id")
 	private VisitEntity visit;
 
 	// Gettery i settery
